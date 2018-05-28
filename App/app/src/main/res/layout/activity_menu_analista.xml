@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vista.MenuActivityAnalista">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/list_proyecto_analista"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_weight="1" />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="10" >
+        </Space>
+        <Button
+            android:id="@+id/button_tarea_analista"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondary"
+            android:textColor="@color/colorAccent"
+            android:text="Sugerir Tareas" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="10"></Space>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
