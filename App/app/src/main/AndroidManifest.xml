@@ -24,8 +24,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Vista.MenuActivityAdmin" />
-        <activity android:name=".Vista.MenuActivityAnalista"></activity>
+        <activity android:name=".Vista.MenuActivityAdmin"/>
+        <activity android:name=".Vista.MenuActivityAnalista" />
+        <activity android:name=".Vista.AgregarTareas" />
+        <activity android:name=".Vista.MenuTareas" />
+        <activity android:name=".Vista.EditarTareas" />
+        <activity android:name=".Vista.EliminarTareas" />
+        <activity android:name=".Vista.MenuOperaciones" />
+        <activity android:name=".Vista.AgregarOperacion" />
+        <activity android:name=".Vista.EditarOperacion" />
+        <activity android:name=".Vista.EliminarOperacion" />
+        <activity android:name=".Vista.MenuTrabajadores" />
+        <activity android:name=".Vista.AgregarTrabajador" />
+        <activity android:name=".Vista.EditarTrabajador" />
+        <activity android:name=".Vista.EliminarTrabajador"></activity>
     </application>
 
 </manifest>
