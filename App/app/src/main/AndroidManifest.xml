@@ -24,7 +24,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Vista.MenuActivityAdmin"/>
+
+
+        <activity
+            android:name=".Vista.MenuActivityAdmin">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
         <activity android:name=".Vista.MenuActivityAnalista" />
         <activity android:name=".Vista.AgregarTareas" />
         <activity android:name=".Vista.MenuTareas" />
@@ -37,7 +47,16 @@
         <activity android:name=".Vista.MenuTrabajadores" />
         <activity android:name=".Vista.AgregarTrabajador" />
         <activity android:name=".Vista.EditarTrabajador" />
-        <activity android:name=".Vista.EliminarTrabajador"></activity>
+        <activity android:name=".Vista.EliminarTrabajador" />
+        <activity android:name=".Vista.AgregarUsuario" />
+        <activity android:name=".Vista.MenuUsuarios" />
+        <activity android:name=".Vista.EditarUsuario" />
+        <activity android:name=".Vista.EliminarUsuario" />
+        <activity android:name=".Vista.MenuProyectos" />
+        <activity android:name=".Vista.AgregarProyecto" />
+        <activity android:name=".Vista.EditarProyecto" />
+        <activity android:name=".Vista.EliminarProyecto" />
+        <activity android:name=".Vista.GenerarMuestreo"></activity>
     </application>
 
 </manifest>

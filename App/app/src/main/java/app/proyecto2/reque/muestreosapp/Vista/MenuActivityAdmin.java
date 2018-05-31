@@ -15,6 +15,9 @@ public class MenuActivityAdmin extends AppCompatActivity {
     Button button_tarea_admin;
     Button button_operacion_admin;
     Button button_trabajador_admin;
+    Button button_proyecto_admin;
+    Button button_muestreo_admin;
+    Button button_usuario_admin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,5 +55,36 @@ public class MenuActivityAdmin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Accion del boton Proyectos
+        button_proyecto_admin = (Button) findViewById(R.id.button_proyecto_admin);
+        button_proyecto_admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivityAdmin.this,MenuProyectos.class);
+                startActivity(intent);
+            }
+        });
+
+        //Accion del boton Muestreos
+        button_muestreo_admin = (Button) findViewById(R.id.button_muestreo_admin);
+        button_muestreo_admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivityAdmin.this,GenerarMuestreo.class);
+                startActivity(intent);
+            }
+        });
+
+        //Accion del boton Usuarios
+        button_usuario_admin = (Button) findViewById(R.id.button_usuario_admin);
+        button_usuario_admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivityAdmin.this,MenuUsuarios.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

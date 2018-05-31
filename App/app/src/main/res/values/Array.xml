@@ -5,4 +5,9 @@
         <item>"No productiva"</item>
         <item>"Colaborativa"</item>
     </string-array>
+
+    <string-array name="tiposUsuarios">
+        <item>"Administrador"</item>
+        <item>"Analista"</item>
+    </string-array>
 </resources>
