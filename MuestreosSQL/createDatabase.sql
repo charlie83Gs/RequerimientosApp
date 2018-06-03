@@ -21,11 +21,9 @@ CREATE TABLE Operacion_proyecto(
 	id INT  AUTO_INCREMENT PRIMARY KEY,
 	idOperacion INT NOT NULL,
 	idProyecto  INT NOT NULL,
-	FOREIGN KEY(idOperacion)REFERENCES Operacion(id),
-	FOREIGN KEY(idProyecto)REFERENCES Proyecto(id)
+	FOREIGN KEY(idOperacion)REFERENCES Operacion(id) ON DELETE CASCADE,
+	FOREIGN KEY(idProyecto)REFERENCES Proyecto(id) ON DELETE CASCADE
 );
-
-
 
 
 DROP TABLE IF EXISTS Tarea;
@@ -41,8 +39,8 @@ CREATE TABLE Operacion_tarea(
 	id INT  AUTO_INCREMENT PRIMARY KEY,
 	idOperacion INT NOT NULL,
 	idTarea  INT NOT NULL,
-	FOREIGN KEY(idOperacion)REFERENCES Operacion(id),
-	FOREIGN KEY(idTarea)REFERENCES tarea(id)
+	FOREIGN KEY(idOperacion)REFERENCES Operacion(id) ON DELETE CASCADE,
+	FOREIGN KEY(idTarea)REFERENCES tarea(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS Muestreo;
@@ -54,8 +52,8 @@ CREATE TABLE Muestreo(
 	rangominutos DECIMAL(10,0),
 	horaInicio	DATETIME,
 	horaFinalizacion DATETIME,
-	FOREIGN KEY(idOperacion)REFERENCES Operacion(id),
-	FOREIGN KEY(idProyecto)REFERENCES Proyecto(id)
+	FOREIGN KEY(idOperacion)REFERENCES Operacion(id) ON DELETE CASCADE,
+	FOREIGN KEY(idProyecto)REFERENCES Proyecto(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS HoraRestringida;
@@ -64,7 +62,7 @@ CREATE TABLE HoraRestringida(
 	idMuestreo INT NOT NULL,
 	hora TIME,
 	duracionMinutos INT,
-	FOREIGN KEY(idMuestreo)REFERENCES Muestreo(id)
+	FOREIGN KEY(idMuestreo)REFERENCES Muestreo(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS HoraMuestrear;
@@ -72,7 +70,7 @@ CREATE TABLE HoraMuestrear(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	idMuestreo INT NOT NULL,
 	hora TIME,
-	FOREIGN KEY(idMuestreo)REFERENCES Muestreo(id)
+	FOREIGN KEY(idMuestreo)REFERENCES Muestreo(id) ON DELETE CASCADE
 );
 
 
@@ -88,8 +86,8 @@ CREATE TABLE Trabajadores_muestreo(
 	id INT  AUTO_INCREMENT PRIMARY KEY,
 	idMuestreo INT NOT NULL,
 	idTrabajador  INT NOT NULL,
-	FOREIGN KEY(idMuestreo)REFERENCES Muestreo(id),
-	FOREIGN KEY(idTrabajador)REFERENCES Trabajador(id)
+	FOREIGN KEY(idMuestreo)REFERENCES Muestreo(id) ON DELETE CASCADE,
+	FOREIGN KEY(idTrabajador)REFERENCES Trabajador(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS Observacion;
@@ -100,8 +98,8 @@ CREATE TABLE Observacion(
 	idTarea  INT NOT NULL,
 	fecha DATETIME,
 	comentario VARCHAR(1024),
-	FOREIGN KEY(idMuestreo)REFERENCES Muestreo(id),
-	FOREIGN KEY(idTrabajador)REFERENCES Trabajador(id)
+	FOREIGN KEY(idMuestreo)REFERENCES Muestreo(id) ON DELETE CASCADE,
+	FOREIGN KEY(idTrabajador)REFERENCES Trabajador(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS Usuario;
@@ -122,6 +120,6 @@ CREATE TABLE Analista_muestreo(
 	id INT  AUTO_INCREMENT PRIMARY KEY,
 	idMuestreo INT NOT NULL,
 	idUsuario INT NOT NULL,
-	FOREIGN KEY(idMuestreo)REFERENCES Muestreo(id),
-	FOREIGN KEY(idUsuario)REFERENCES Usuario(id)
+	FOREIGN KEY(idMuestreo)REFERENCES Muestreo(id) ON DELETE CASCADE,
+	FOREIGN KEY(idUsuario)REFERENCES Usuario(id) ON DELETE CASCADE
 );

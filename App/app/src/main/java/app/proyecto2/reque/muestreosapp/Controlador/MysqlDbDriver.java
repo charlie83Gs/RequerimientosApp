@@ -127,7 +127,7 @@ public class MysqlDbDriver {
     public ArrayList<String> mostrarTareas(){
         ArrayList<String> tareas = new ArrayList<String>();
         try {
-            String query = "CALL mostrarTareas()";
+            String query = "select id,nombre from tarea";
             Statement st = connection.createStatement();
 
             ResultSet rs = st.executeQuery(query);
@@ -168,4 +168,136 @@ public class MysqlDbDriver {
         }
     }
 
+    public void eliminarTarea(int id){
+
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL eliminarTarea(?)}");
+
+            statement.setInt(1,id);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("Eliminado");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al eliminar Tarea",e);
+        }
+    }
+
+    public void agregarOperacion(String nombre){
+
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL agregarOperacion(?)}");
+
+            statement.setString(1,nombre);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("agregada");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al agregar operacion",e);
+        }
+    }
+
+    public int ultimaOp_agregada(){
+        int idT = 0;
+        try {
+            String query = "select max(id) from operacion";
+            Statement st = connection.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+            rs.next();
+            idT = rs.getInt("max(id)");
+            st.close();
+
+        } catch (SQLException e) {
+            Log.e("Login","Error",e);
+        }
+        return idT;
+    }
+
+    public void asociar_operacion_tarea(int idOp,int idTar){
+
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL asociar_tarea_operacion(?,?)}");
+
+            statement.setInt(1,idOp);
+            statement.setInt(2,idTar);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("agregada");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al agregar operacion",e);
+        }
+    }
+
+    public ArrayList<String> mostrarOperaciones(){
+        ArrayList<String> operaciones = new ArrayList<String>();
+        try {
+            String query = "select id,nombre from operacion";
+            Statement st = connection.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                int idO = rs.getInt("id");
+                String nombreO = rs.getString("nombre");
+
+                String tar = "Id:"+String.valueOf(idO)+" "+nombreO;
+
+                operaciones.add(tar);
+                System.out.println(nombreO);
+            }
+            st.close();
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al agregar tarea",e);
+        }
+        return operaciones;
+    }
+
+    public void editarOperacion(int id,String nombre){
+
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL editarOperacion(?,?)}");
+
+            statement.setInt(1,id);
+            statement.setString(2,nombre);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("editado");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al editar operacion",e);
+        }
+    }
+
+    public void eliminarOperacion(int id){
+
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL eliminarOperacion(?)}");
+
+            statement.setInt(1,id);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("eliminado");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al eliminar operacion",e);
+        }
+    }
 }

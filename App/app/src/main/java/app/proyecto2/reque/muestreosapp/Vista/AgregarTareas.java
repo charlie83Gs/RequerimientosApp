@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import app.proyecto2.reque.muestreosapp.Controlador.MysqlDbDriver;
 import app.proyecto2.reque.muestreosapp.R;
@@ -28,8 +29,7 @@ public class AgregarTareas extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tiposTarea,android.R.layout.simple_spinner_item);
         tiposTareas.setAdapter(adapter);
 
-
-
+        //Evento del boton de confirmacion
         confirmarAgregacion = (Button) findViewById(R.id.button_agregar_tarea);
         confirmarAgregacion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +38,7 @@ public class AgregarTareas extends AppCompatActivity {
                 MysqlDbDriver mysql = MysqlDbDriver.getInstance();
                 String text = tiposTareas.getSelectedItem().toString();
                 mysql.agregarTarea(String.valueOf(nombreTarea.getText()),text);
+                Toast.makeText(getApplicationContext(), "Tarea agregada", Toast.LENGTH_LONG).show();
             }
         });
     }
