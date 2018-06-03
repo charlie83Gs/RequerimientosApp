@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.util.ArrayList;
 
 import app.proyecto2.reque.muestreosapp.Modelo.TipoUsuario;
 import app.proyecto2.reque.muestreosapp.Modelo.Usuario;
@@ -16,7 +17,7 @@ import app.proyecto2.reque.muestreosapp.Modelo.Usuario;
 public class MysqlDbDriver {
     private static final MysqlDbDriver ourInstance = new MysqlDbDriver();
 
-    private static final String ip = "192.168.1.8";
+    private static final String ip = "192.168.0.108";
     private static final String port = "3306";
     private static final String dataBase = "requemuestreos";
     private Connection connection;
@@ -102,6 +103,69 @@ public class MysqlDbDriver {
 
         }
         return null;
+    }
+
+    public void agregarTarea(String nombre, String tipo){
+
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL agregarTarea(?,?)}");
+
+            statement.setString(1,nombre);
+            statement.setString(2,tipo);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("agregado");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al agregar tarea",e);
+        }
+    }
+
+    public ArrayList<String> mostrarTareas(){
+        ArrayList<String> tareas = new ArrayList<String>();
+        try {
+            String query = "CALL mostrarTareas()";
+            Statement st = connection.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                int idT = rs.getInt("id");
+                String nombreT = rs.getString("nombre");
+
+                String tar = "Id:"+String.valueOf(idT)+" "+nombreT;
+
+                tareas.add(tar);
+                System.out.println(nombreT);
+            }
+            st.close();
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al agregar tarea",e);
+        }
+        return tareas;
+    }
+
+    public void editarTarea(int id,String nombre, String tipo){
+
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL editarTarea(?,?,?)}");
+
+            statement.setInt(1,id);
+            statement.setString(2,nombre);
+            statement.setString(3,tipo);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("editado");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al editar tarea",e);
+        }
     }
 
 }
