@@ -15,13 +15,17 @@ CREATE PROCEDURE validate_login(IN pCorreo VARCHAR(100), IN pPassword VARCHAR(10
 								OUT pTelefono INT,OUT pTipo INT, Out pId INT)
 	BEGIN
 		DECLARE qEncontrado INT;
+		DECLARE qPassword Varchar(100);
 
-		SELECT COUNT(id), id ,telefono, tipoUsuario 
-		INTO qEncontrado, pId, pTelefono, pTipo
+		SELECT COUNT(id), id ,telefono, tipoUsuario, passwordDigest 
+		INTO qEncontrado, pId, pTelefono, pTipo, qPassword
 		FROM Usuario
 		WHERE correo = pCorreo;
-
+		
 		IF(qEncontrado = 0) THEN
+			SET pTipo = 0;
+		END IF;
+		IF(!(qPassword LIKE pPassword)) THEN
 			SET pTipo = 0;
 		END IF;
 
