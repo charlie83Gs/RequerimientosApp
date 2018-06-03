@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vista.EliminarTrabajador">
+
+    <RelativeLayout
+        android:layout_width="385dp"
+        android:layout_height="512dp">
+
+
+        <Button
+            android:id="@+id/button_eliminar_trabajador"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="204dp"
+            android:background="@color/colorSecondary"
+            android:text="Confirmar"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="42dp"
+            android:text="Eliminar trabajador"
+            android:textAppearance="@android:style/TextAppearance.Large" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="167dp"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="124dp"
+            android:text="Seleccionar trabajador" />
+
+        <Spinner
+            android:id="@+id/spinner8"
+            android:layout_width="234dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="167dp" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

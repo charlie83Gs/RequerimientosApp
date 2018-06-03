@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vista.AgregarProyecto">
+
+    <RelativeLayout
+        android:layout_width="384dp"
+        android:layout_height="511dp">
+
+
+        <Button
+            android:id="@+id/button_agregar_operacion2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="77dp"
+            android:background="@color/colorSecondary"
+            android:text="Confirmar"
+            android:textColor="@color/colorAccent" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="184dp"
+            android:layout_marginEnd="38dp"
+            android:clickable="true"
+            app:backgroundTint="@color/colorPrimary"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="36dp"
+            android:text="Agregar proyecto"
+            android:textAppearance="@android:style/TextAppearance.Large" />
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="117dp"
+            android:text="Nombre" />
+
+        <TextView
+            android:id="@+id/textView40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/textView39"
+            android:layout_marginTop="182dp"
+            android:text="Descripción" />
+
+        <TextView
+            android:id="@+id/textView41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView39"
+            android:layout_centerVertical="true"
+            android:text="Agregar operaciones" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="210dp"
+            android:layout_height="38dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="49dp"
+            android:layout_marginTop="108dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="203dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/textView40"
+            android:layout_marginEnd="46dp"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+        <Spinner
+            android:id="@+id/spinner11"
+            android:layout_width="214dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView38"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="193dp" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
