@@ -2,14 +2,17 @@ package app.proyecto2.reque.muestreosapp.Vista;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import app.proyecto2.reque.muestreosapp.Controlador.MysqlDbDriver;
 import app.proyecto2.reque.muestreosapp.R;
 
 public class AgregarUsuario extends AppCompatActivity {
 
     Spinner tiposUsuario;
+    private MysqlDbDriver mysql;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,5 +22,11 @@ public class AgregarUsuario extends AppCompatActivity {
         tiposUsuario = (Spinner)findViewById(R.id.spinner_tipo_usuario);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tiposUsuarios,android.R.layout.simple_spinner_item);
         tiposUsuario.setAdapter(adapter);
+        mysql =  MysqlDbDriver.getInstance();
+    }
+
+    public void agregarUsuarioFun(View v){
+        mysql.add_User();
+
     }
 }
