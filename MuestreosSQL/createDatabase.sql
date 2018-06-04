@@ -48,10 +48,10 @@ CREATE TABLE Muestreo(
 	id INT  AUTO_INCREMENT PRIMARY KEY,
 	idOperacion INT NOT NULL,
 	idProyecto  INT NOT NULL,
-	cantidadObservaciones DECIMAL(10,0),
-	rangominutos DECIMAL(10,0),
-	horaInicio	DATETIME,
-	horaFinalizacion DATETIME,
+	cantidadObservaciones INT,
+	rangominutos INT,
+	horaInicio	TIME,
+	horaFinalizacion TIME,
 	FOREIGN KEY(idOperacion)REFERENCES Operacion(id) ON DELETE CASCADE,
 	FOREIGN KEY(idProyecto)REFERENCES Proyecto(id) ON DELETE CASCADE
 );

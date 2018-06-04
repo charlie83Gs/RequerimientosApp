@@ -8,49 +8,48 @@
 
     <RelativeLayout
         android:layout_width="386dp"
-        android:layout_height="512dp"
+        android:layout_height="511dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
 
         <Button
-            android:id="@+id/button_agregar_operacion4"
+            android:id="@+id/button_generar_muestreo"
             android:layout_width="183dp"
             android:layout_height="33dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="23dp"
+            android:layout_marginBottom="170dp"
             android:background="@color/colorSecondary"
             android:text="Confirmar"
             android:textColor="@color/colorAccent" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton6"
-            android:layout_width="29dp"
+            android:id="@+id/floatingActionButton_agregarHoraRestringida"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView54"
-            android:layout_alignEnd="@+id/spinner16"
+            android:layout_alignEnd="@+id/button_generar_muestreo"
+            android:layout_alignTop="@+id/text_DuracionMin"
             android:clickable="true"
             app:backgroundTint="@color/colorPrimary"
             app:srcCompat="@android:drawable/ic_input_add" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton5"
-            android:layout_width="29dp"
+            android:id="@+id/floatingActionButton_trabajadores_muestreo"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/floatingActionButton4"
+            android:layout_alignEnd="@+id/spinner_operaciones_muestreo"
             android:layout_alignTop="@+id/textView49"
             android:clickable="true"
             app:backgroundTint="@color/colorPrimary"
             app:srcCompat="@android:drawable/ic_input_add" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton4"
-            android:layout_width="29dp"
-            android:layout_height="160dp"
-            android:layout_alignParentEnd="true"
+            android:id="@+id/floatingActionButton_agregar_analistasM"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/spinner_proyectos_muestreo"
             android:layout_alignTop="@+id/textView48"
-            android:layout_marginEnd="15dp"
             android:clickable="true"
             app:backgroundTint="@color/colorPrimary"
             app:srcCompat="@android:drawable/ic_input_add" />
@@ -61,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="12dp"
             android:text="Generación de muestreo"
             android:textAppearance="@android:style/TextAppearance.Medium" />
 
@@ -71,8 +70,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="58dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="52dp"
             android:text="Seleccionar proyecto" />
 
         <TextView
@@ -81,11 +80,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/textView46"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="92dp"
             android:text="Seleccionar operación" />
 
         <Spinner
-            android:id="@+id/spinner14"
+            android:id="@+id/spinner_proyectos_muestreo"
             android:layout_width="186dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -93,68 +92,69 @@
             android:layout_marginEnd="27dp" />
 
         <Spinner
-            android:id="@+id/spinner15"
+            android:id="@+id/spinner_operaciones_muestreo"
             android:layout_width="187dp"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/spinner14"
-            android:layout_alignTop="@+id/textView47" />
+            android:layout_alignBottom="@+id/textView47"
+            android:layout_alignStart="@+id/spinner_proyectos_muestreo" />
 
         <TextView
             android:id="@+id/textView48"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/textView46"
-            android:layout_marginTop="151dp"
+            android:layout_marginBottom="130dp"
             android:text="Analistas" />
 
         <TextView
             android:id="@+id/textView49"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/textView46"
-            android:layout_marginTop="200dp"
+            android:layout_marginBottom="82dp"
             android:text="Trabajadores" />
 
         <Spinner
-            android:id="@+id/spinner16"
+            android:id="@+id/spinner_analistas_muestreo"
             android:layout_width="211dp"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/textView45"
             android:layout_alignTop="@+id/textView48" />
 
         <Spinner
-            android:id="@+id/spinner17"
+            android:id="@+id/spinner_trabajadores_muestreo"
             android:layout_width="208dp"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView45"
-            android:layout_alignTop="@+id/textView49" />
+            android:layout_alignTop="@+id/floatingActionButton_trabajadores_muestreo"
+            android:layout_toStartOf="@+id/floatingActionButton_agregar_analistasM" />
 
         <TextView
             android:id="@+id/textView50"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/textView46"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="136dp"
             android:text="Cantidad observaciones" />
 
         <TextView
             android:id="@+id/textView51"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/textView46"
-            android:layout_marginBottom="208dp"
+            android:layout_marginTop="179dp"
             android:text="Rango de minutos" />
 
         <TextView
             android:id="@+id/textView52"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/textView46"
-            android:layout_marginBottom="163dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="220dp"
+            android:layout_toStartOf="@+id/textView45"
             android:text="Hora inicio" />
 
         <TextView
@@ -163,64 +163,84 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/textView46"
-            android:layout_marginBottom="125dp"
+            android:layout_marginBottom="229dp"
             android:text="Hora finalización" />
 
         <TextView
             android:id="@+id/textView54"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/textView46"
-            android:layout_marginBottom="80dp"
+            android:layout_above="@+id/floatingActionButton_agregarHoraRestringida"
+            android:layout_alignEnd="@+id/textView51"
             android:text="Horas restringidas" />
 
         <EditText
-            android:id="@+id/editText3"
-            android:layout_width="124dp"
-            android:layout_height="34dp"
+            android:id="@+id/text_hora_inicio"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/textView52"
+            android:layout_marginBottom="-12dp"
             android:layout_toEndOf="@+id/textView49"
             android:ems="10"
-            android:inputType="time" />
+            android:inputType="time"
+            android:text="00:00:00" />
 
         <EditText
-            android:id="@+id/editText5"
-            android:layout_width="108dp"
-            android:layout_height="29dp"
+            android:id="@+id/text_hora_final"
+            android:layout_width="84dp"
+            android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/textView53"
-            android:layout_alignEnd="@+id/spinner14"
-            android:layout_marginEnd="107dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="-16dp"
+            android:layout_marginEnd="152dp"
             android:ems="10"
-            android:inputType="time" />
+            android:inputType="time"
+            android:text="00:00:00" />
 
         <EditText
-            android:id="@+id/editText6"
-            android:layout_width="140dp"
-            android:layout_height="35dp"
-            android:layout_alignBottom="@+id/textView54"
-            android:layout_alignEnd="@+id/spinner14"
-            android:layout_marginEnd="75dp"
+            android:id="@+id/text_horaRest"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/floatingActionButton_trabajadores_muestreo"
+            android:layout_centerHorizontal="true"
             android:ems="10"
-            android:inputType="time" />
+            android:inputType="time"
+            android:text="00:00:00" />
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/text_rango_minutos"
             android:layout_width="54dp"
-            android:layout_height="33dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/editText5"
-            android:layout_marginBottom="201dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView51"
+            android:layout_marginBottom="-13dp"
+            android:layout_toEndOf="@+id/textView46"
             android:ems="10"
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/editText8"
+            android:id="@+id/text_cantidad_observaciones"
             android:layout_width="60dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/textView50"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="144dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textView55"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/floatingActionButton_agregarHoraRestringida"
+            android:layout_alignStart="@+id/textView54"
+            android:text="Duracion" />
+
+        <EditText
+            android:id="@+id/text_DuracionMin"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/textView48"
             android:ems="10"
             android:inputType="number" />
     </RelativeLayout>

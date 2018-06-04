@@ -12,7 +12,7 @@
 
 
         <Button
-            android:id="@+id/button_agregar_operacion3"
+            android:id="@+id/button_eliminar_proyecto"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -43,7 +43,7 @@
             android:text="Seleccionar proyecto" />
 
         <Spinner
-            android:id="@+id/spinner13"
+            android:id="@+id/spinner_proyectos_eliminar"
             android:layout_width="262dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"

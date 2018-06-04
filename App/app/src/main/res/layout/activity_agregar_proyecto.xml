@@ -12,24 +12,22 @@
 
 
         <Button
-            android:id="@+id/button_agregar_operacion2"
+            android:id="@+id/button_agregar_proyecto"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="77dp"
+            android:layout_marginBottom="210dp"
             android:background="@color/colorSecondary"
             android:text="Confirmar"
             android:textColor="@color/colorAccent" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton3"
+            android:id="@+id/floatingActionButton_agregarOp_agregarPro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="184dp"
-            android:layout_marginEnd="38dp"
+            android:layout_alignBottom="@+id/spinner_operacionesPro_agregar"
+            android:layout_alignEnd="@+id/text_descripcionPro_agregar"
             android:clickable="true"
             app:backgroundTint="@color/colorPrimary"
             app:srcCompat="@android:drawable/ic_input_add" />
@@ -67,40 +65,43 @@
             android:id="@+id/textView41"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/textView39"
-            android:layout_centerVertical="true"
+            android:layout_marginBottom="134dp"
             android:text="Agregar operaciones" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="210dp"
-            android:layout_height="38dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_marginEnd="49dp"
-            android:layout_marginTop="108dp">
+            android:layout_marginTop="89dp">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/text_nombrePro_agregar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/text_descripcionPro_agregar"
             android:layout_width="203dp"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/textView40"
             android:layout_marginEnd="46dp"
+            android:layout_marginTop="-16dp"
             android:ems="10"
             android:inputType="textMultiLine" />
 
         <Spinner
-            android:id="@+id/spinner11"
+            android:id="@+id/spinner_operacionesPro_agregar"
             android:layout_width="214dp"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/textView38"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="193dp" />
+            android:layout_marginBottom="78dp" />
 
     </RelativeLayout>
 

@@ -251,11 +251,8 @@ public class MysqlDbDriver {
             while(rs.next()){
                 int idO = rs.getInt("id");
                 String nombreO = rs.getString("nombre");
-
                 String tar = "Id:"+String.valueOf(idO)+" "+nombreO;
-
                 operaciones.add(tar);
-                System.out.println(nombreO);
             }
             st.close();
 
@@ -302,6 +299,291 @@ public class MysqlDbDriver {
         }
     }
 
+
+    public ArrayList<String> mostrarProyectos(){
+        ArrayList<String> operaciones = new ArrayList<String>();
+        try {
+            String query = "select id,nombre from proyecto";
+            Statement st = connection.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                int idPro = rs.getInt("id");
+                String nombrePro = rs.getString("nombre");
+
+                String proyecto = "Id:"+String.valueOf(idPro)+" "+nombrePro;
+
+                operaciones.add(proyecto);
+                System.out.println(nombrePro);
+            }
+            st.close();
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al agregar tarea",e);
+        }
+        return operaciones;
+    }
+
+    public int ultimoProyecto_agregado(){
+        int idProyecto = 0;
+        try {
+            String query = "select max(id) from proyecto";
+            Statement st = connection.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+            rs.next();
+            idProyecto = rs.getInt("max(id)");
+            st.close();
+
+        } catch (SQLException e) {
+            Log.e("Login","Error",e);
+        }
+        return idProyecto;
+    }
+
+    public String descripcionPro(int idPro){
+        String descrip = "";
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL descripcionPro(?)}");
+            statement.setInt(1,idPro);
+
+            ResultSet rs = statement.executeQuery();
+            rs.next();
+            descrip = rs.getString("descripcion");
+            statement.close();
+
+        } catch (SQLException e) {
+            Log.e("Login","Error",e);
+        }
+        return descrip;
+    }
+
+
+
+    public void agregarProyecto(String nombre,String descripcion){
+
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL agregarProyecto(?,?)}");
+
+            statement.setString(1,nombre);
+            statement.setString(2,descripcion);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("proyecto agregado");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al agregar proyecto",e);
+        }
+    }
+
+
+    public void asociar_operacion_proyecto(int idOp,int idPro){
+
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL asociar_operacion_proyecto(?,?)}");
+
+            statement.setInt(1,idOp);
+            statement.setInt(2,idPro);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("agregada");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al agregar operacion",e);
+        }
+    }
+
+
+    public void editarProyecto(int idPro,String nombrePro,String descripcionPro){
+
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL editarProyecto(?,?,?)}");
+
+            statement.setInt(1,idPro);
+            statement.setString(2,nombrePro);
+            statement.setString(3,descripcionPro);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("proyecto editado");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al editar proyecto",e);
+        }
+    }
+
+
+
+    public void eliminarProyecto(int idPro){
+
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL eliminarProyecto(?)}");
+
+            statement.setInt(1,idPro);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("proyecto eliminado");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al eliminar proyecto",e);
+        }
+    }
+
+
+
+    public void generarMuestreo(int id_operacion,int id_proyecto,int cantidad_obs,int rango_min,String hora_ini,String hora_fin){
+
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL generarMuestreo(?,?,?,?,?,?)}");
+
+            statement.setInt(1,id_operacion);
+            statement.setInt(2,id_proyecto);
+            statement.setInt(3,cantidad_obs);
+            statement.setInt(4,rango_min);
+            statement.setString(5,hora_ini);
+            statement.setString(6,hora_fin);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("Muestreo generado");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al generar muestreo",e);
+        }
+    }
+
+    public int ultimoMuestreo_generado(){
+        int idMuestreo = 0;
+        try {
+            String query = "select max(id) from muestreo";
+            Statement st = connection.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+            rs.next();
+            idMuestreo = rs.getInt("max(id)");
+            st.close();
+
+        } catch (SQLException e) {
+            Log.e("Login","Error",e);
+        }
+        return idMuestreo;
+    }
+
+    public int agregarHoraRestringida(int idMuestreo,String hora,int duracion){
+
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL agregarHoraRestringida(?,?,?)}");
+
+            statement.setInt(1,idMuestreo);
+            statement.setString(2,hora);
+            statement.setInt(3,duracion);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("Hora restringida agregada");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error",e);
+        }
+        return idMuestreo;
+    }
+
+    public ArrayList<String> mostrarAnalistas(){
+        ArrayList<String> operaciones = new ArrayList<String>();
+        try {
+            String query = "select id,nombre from usuario where tipoUsuario=2";
+            Statement st = connection.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                int idAnalista = rs.getInt("id");
+                String nombreAnalista = rs.getString("nombre");
+
+                String analista = "Id:"+String.valueOf(idAnalista)+" "+nombreAnalista;
+
+                operaciones.add(analista);
+            }
+            st.close();
+        } catch (SQLException e) {
+            Log.e("Login","Error",e);
+        }
+        return operaciones;
+    }
+
+    public void asociar_analista_muestreo(int idMuestreo,int idUsuario){
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL asociar_analista_muestreo(?,?)}");
+
+            statement.setInt(1,idMuestreo);
+            statement.setInt(2,idUsuario);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("Asociacion realizada");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error",e);
+        }
+    }
+
+
+    public ArrayList<String> mostrarTrabajadores(){
+        ArrayList<String> trabajadores = new ArrayList<String>();
+        try {
+            String query = "select id,apodo from trabajador";
+            Statement st = connection.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                int idTrabajador = rs.getInt("id");
+                String apodoTrabajador = rs.getString("apodo");
+
+                String analista = "Id:"+String.valueOf(idTrabajador)+" "+apodoTrabajador;
+
+                trabajadores.add(analista);
+            }
+            st.close();
+        } catch (SQLException e) {
+            Log.e("Login","Error",e);
+        }
+        return trabajadores;
+    }
+
+    public void asociar_trabajador_muestreo(int idMuestreo,int idTrabajador){
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL asociar_trabajador_muestreo(?,?)}");
+
+            statement.setInt(1,idMuestreo);
+            statement.setInt(2,idTrabajador);
+
+            statement.execute();
+            statement.close();
+
+            System.out.println("Asociacion realizada");
+
+        } catch (SQLException e) {
+            Log.e("Login","Error",e);
+        }
+
     public void addUsers(String pNombre,String pPassword, String pCorreo, int pTelefono, int pTipo){
         try {
             CallableStatement statement = connection.prepareCall("{CALL create_user(?,?,?,?,?)}");
@@ -331,6 +613,5 @@ public class MysqlDbDriver {
         } catch (SQLException e) {
             Log.e("Login","Error al agregar trabajador",e);
         }
-
     }
 }
