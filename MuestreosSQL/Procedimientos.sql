@@ -18,6 +18,28 @@ CREATE PROCEDURE create_trabajador(IN pApodo VARCHAR(50),IN pPuesto VARCHAR(50))
 
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE editarTrabajadorApodo(IN ID_OP INT,IN pApodo VARCHAR(50))
+	UPDATE trabajador SET apodo = pApodo WHERE id=ID_OP; //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE editarTrabajadorPuesto(IN ID_OP INT,IN pPuesto VARCHAR(50))
+	UPDATE trabajador SET puesto = pPuesto WHERE id=ID_OP; //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE eliminarTrabajador(IN ID_OP INT)
+	DELETE FROM trabajador WHERE id=ID_OP; //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE getIdTrabajador(IN pApodo VARCHAR(50), OUT ID_OP INT)
+	SELECT id 
+	into ID_OP
+	FROM trabajador WHERE apodo = pApodo; //
+DELIMITER ;
+
 
 DELIMITER //
 

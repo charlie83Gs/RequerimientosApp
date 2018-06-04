@@ -19,5 +19,7 @@ public class EditarUsuario extends AppCompatActivity {
         tiposUsuario = (Spinner)findViewById(R.id.spinner_tipo_usuario);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tiposUsuarios,android.R.layout.simple_spinner_item);
         tiposUsuario.setAdapter(adapter);
+
+
     }
 }

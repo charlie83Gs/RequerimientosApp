@@ -45,7 +45,7 @@
             android:text="Seleccionar trabajador" />
 
         <Spinner
-            android:id="@+id/spinner7"
+            android:id="@+id/spinTrabajoEdit"
             android:layout_width="268dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -72,29 +72,25 @@
             android:layout_marginStart="33dp"
             android:text="Rol" />
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="239dp"
+        <EditText
+            android:id="@+id/textoNuevoNombre"
+            android:layout_width="265dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="202dp">
+            android:layout_alignBottom="@+id/textView25"
+            android:layout_alignStart="@+id/spinTrabajoEdit"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
-            <android.support.design.widget.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </android.support.design.widget.TextInputLayout>
+        <EditText
+            android:id="@+id/textoNuevoRol"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView26"
+            android:layout_alignStart="@+id/textView23"
+            android:layout_marginStart="-26dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="237dp"
-            android:layout_height="47dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="184dp">
-
-            <android.support.design.widget.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </android.support.design.widget.TextInputLayout>
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
