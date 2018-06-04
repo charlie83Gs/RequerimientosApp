@@ -16,7 +16,7 @@ import app.proyecto2.reque.muestreosapp.Modelo.Usuario;
 public class MysqlDbDriver {
     private static final MysqlDbDriver ourInstance = new MysqlDbDriver();
 
-    private static final String ip = "10.0.2.2";
+    private static final String ip = "192.168.1.8";
     private static final String port = "3306";
     private static final String dataBase = "requemuestreos";
     private Connection connection;
@@ -97,31 +97,11 @@ public class MysqlDbDriver {
         }catch (Exception e){
             Log.e("Login","Error al valdar session",e);
         }
-
         if(tipo != 0){
             return new Usuario(id,String.valueOf(telefono),correo, TipoUsuario.fromInteger(tipo));
 
         }
         return null;
-    }
-
-    public void add_User(String pPassword, String pCorreo, Integer pTelefono, Integer tipo){
-        try {
-            CallableStatement statement = connection.prepareCall("{CALL create_user(?,?,?,?)}");
-            statement.setString(1,pPassword);
-            statement.setString(2,pCorreo);
-            statement.setInt(3, pTelefono);
-            statement.setInt(4,  tipo);
-
-            statement.execute();
-
-            Log.i("Add user: ", "Se agrego el usuario.");
-
-        } catch (SQLException e) {
-            Log.e("Add user: ","Error al tratar de ingresar usuario",e);
-        }
-
-
     }
 
 }
