@@ -17,7 +17,8 @@ import app.proyecto2.reque.muestreosapp.Modelo.Usuario;
 public class MysqlDbDriver {
     private static final MysqlDbDriver ourInstance = new MysqlDbDriver();
 
-    private static final String ip = "192.168.0.108";
+    private static final String ip = "192.168.43.20";
+
     private static final String port = "3306";
     private static final String dataBase = "requemuestreos";
     private Connection connection;
@@ -297,6 +298,7 @@ public class MysqlDbDriver {
             Log.e("Login","Error al eliminar operacion",e);
         }
     }
+
 
     public ArrayList<String> mostrarProyectos(){
         ArrayList<String> operaciones = new ArrayList<String>();
@@ -580,6 +582,36 @@ public class MysqlDbDriver {
 
         } catch (SQLException e) {
             Log.e("Login","Error",e);
+        }
+
+    public void addUsers(String pNombre,String pPassword, String pCorreo, int pTelefono, int pTipo){
+        try {
+            CallableStatement statement = connection.prepareCall("{CALL create_user(?,?,?,?,?)}");
+            statement.setString(1,pNombre);
+            statement.setString(2,pPassword);
+            statement.setString(3,pCorreo);
+            statement.setInt(4,pTelefono);
+            statement.setInt(5,pTipo);
+
+            statement.execute();
+
+            System.out.println("Usuario Agregado");
+        } catch (SQLException e) {
+            Log.e("Login","Error al agregar usuario",e);
+        }
+    }
+
+    public void addTrabajador(String apodo, String puesto){
+        try {
+            CallableStatement statement = connection.prepareCall("{CALL create_trabajador(?,?)}");
+            statement.setString(1,apodo);
+            statement.setString(2,puesto);
+
+            statement.execute();
+
+            System.out.println("Trabajador Agregado");
+        } catch (SQLException e) {
+            Log.e("Login","Error al agregar trabajador",e);
         }
     }
 }

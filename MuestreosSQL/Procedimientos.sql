@@ -1,9 +1,20 @@
 DELIMITER //
 
-CREATE PROCEDURE create_user(IN pPassword VARCHAR(100),IN pCorreo VARCHAR(100), IN pTelefono INT, IN pTipo INT)
+
+CREATE PROCEDURE create_user(IN pPassword VARCHAR(100),IN pCorreo VARCHAR(100),IN pNombre VARCHAR(100), IN pTelefono INT, IN pTipo INT)
 	BEGIN
-		INSERT INTO Usuario(passwordDigest,correo,telefono,tipoUsuario)
-		VALUES(pPassword,pCorreo,pTelefono,pTipo);
+		INSERT INTO Usuario(passwordDigest,correo,nombre,telefono,tipoUsuario)
+		VALUES(pPassword,pCorreo,pNombre,pTelefono,pTipo);
+	END//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE create_trabajador(IN pApodo VARCHAR(50),IN pPuesto VARCHAR(50))
+	BEGIN
+		INSERT INTO trabajador(apodo, puesto)
+		VALUES(pApodo, pPuesto);
 	END//
 
 DELIMITER ;
