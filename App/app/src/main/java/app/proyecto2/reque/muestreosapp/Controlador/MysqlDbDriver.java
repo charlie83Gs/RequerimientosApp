@@ -583,8 +583,9 @@ public class MysqlDbDriver {
         } catch (SQLException e) {
             Log.e("Login","Error",e);
         }
+    }
 
-    public void addUsers(String pNombre,String pPassword, String pCorreo, int pTelefono, int pTipo){
+    public void addUsers(String pNombre,String pPassword,String pCorreo, int pTelefono,int pTipo){
         try {
             CallableStatement statement = connection.prepareCall("{CALL create_user(?,?,?,?,?)}");
             statement.setString(1,pNombre);
