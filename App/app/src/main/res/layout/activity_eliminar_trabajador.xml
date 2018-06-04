@@ -43,7 +43,7 @@
             android:text="Seleccionar trabajador" />
 
         <Spinner
-            android:id="@+id/spinner8"
+            android:id="@+id/spinnerElimTrabajador"
             android:layout_width="234dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"

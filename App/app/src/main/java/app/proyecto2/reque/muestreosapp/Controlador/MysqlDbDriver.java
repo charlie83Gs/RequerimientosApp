@@ -614,4 +614,74 @@ public class MysqlDbDriver {
             Log.e("Login","Error al agregar trabajador",e);
         }
     }
+
+    public ArrayList<String> mostrarTrabajdores(){
+        ArrayList<String> trabajadores = new ArrayList<String>();
+        try {
+            String query = "select apodo from trabajador";
+            Statement st = connection.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                String nombreT = rs.getString("apodo");
+
+                trabajadores.add(nombreT);
+                System.out.println(nombreT);
+            }
+            st.close();
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al tratar de recuperar trabajadores",e);
+        }
+        return trabajadores;
+    }
+
+    public void editarTrabajador(String trabajador,String newapodo, String newpuesto){
+        int idTrabajador = -1;
+        try {
+            CallableStatement statement = connection.prepareCall("{CALL getIdTrabajador(?,?)}");
+            statement.setString(1,trabajador);
+            statement.registerOutParameter(2, Types.INTEGER);
+            statement.execute();
+            idTrabajador = statement.getInt(2);
+
+            if(!newapodo.isEmpty()){
+                statement = connection.prepareCall("{CALL editarTrabajadorApodo(?,?)}");
+                statement.setInt(1,idTrabajador);
+                statement.setString(2,newapodo);
+                statement.execute();
+            }
+            if(!newpuesto.isEmpty()){
+                statement = connection.prepareCall("{CALL editarTrabajadorPuesto(?,?)}");
+                statement.setInt(1,idTrabajador);
+                statement.setString(2,newpuesto);
+                statement.execute();
+            }
+            System.out.println("Trabajador Editado");
+        } catch (SQLException e) {
+            Log.e("Login","Error al editar trabajador",e);
+        }
+
+    }
+
+    public void eliminarTrabajador(String trabajador){
+        int idTrabajador = -1;
+        try {
+            CallableStatement statement = connection.prepareCall("{CALL getIdTrabajador(?,?)}");
+            statement.setString(1,trabajador);
+            statement.registerOutParameter(2, Types.INTEGER);
+            statement.execute();
+            idTrabajador = statement.getInt(2);
+
+            statement = connection.prepareCall("{CALL  eliminarTrabajador(?)}");
+            statement.setInt(1,idTrabajador);
+            statement.execute();
+
+            System.out.println("Trabajador Eliminado");
+        } catch (SQLException e) {
+            Log.e("Login","Error al eliminar trabajador",e);
+        }
+
+    }
+
 }
