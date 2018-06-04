@@ -80,7 +80,7 @@
             android:text="Tipo de Usuario" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/correoAddUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/textView33"
@@ -123,7 +123,7 @@
             android:id="@+id/spinner_tipo_usuario"
             android:layout_width="188dp"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/editText"
+            android:layout_alignEnd="@+id/correoAddUser"
             android:layout_alignTop="@+id/textView34" />
 
         <TextView
@@ -139,7 +139,7 @@
             android:id="@+id/spinner9"
             android:layout_width="173dp"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/editText"
+            android:layout_alignEnd="@+id/correoAddUser"
             android:layout_alignTop="@+id/textView35" />
     </RelativeLayout>
 
