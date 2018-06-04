@@ -11,13 +11,14 @@ import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
 
+import app.proyecto2.reque.muestreosapp.Modelo.Muestreo;
 import app.proyecto2.reque.muestreosapp.Modelo.TipoUsuario;
 import app.proyecto2.reque.muestreosapp.Modelo.Usuario;
 
 public class MysqlDbDriver {
     private static final MysqlDbDriver ourInstance = new MysqlDbDriver();
 
-    private static final String ip = "192.168.43.20";
+    private static final String ip = "192.168.42.125";
 
     private static final String port = "3306";
     private static final String dataBase = "requemuestreos";
@@ -46,9 +47,13 @@ public class MysqlDbDriver {
                     "jdbc:mysql://"+ip+":"+port+"/"+dataBase, Usuario, Contraseña);
             exito = true;
         } catch (SQLException se) {
+
             Log.e("Database","oops! No se puede conectar. Error: ",se);
+
         } catch (ClassNotFoundException e) {
+
             Log.d("Database:","oops! No se encuentra la clase. Error: " + e.getMessage());
+
         }
 
         return  exito;
@@ -63,7 +68,9 @@ public class MysqlDbDriver {
             }
             exito = true;
         } catch (SQLException se) {
+
             System.out.println("oops! No se puede conectar. Error: " + se.toString());
+
         }
     return exito;
     }
@@ -101,7 +108,6 @@ public class MysqlDbDriver {
         }
         if(tipo != 0){
             return new Usuario(id,String.valueOf(telefono),correo, TipoUsuario.fromInteger(tipo));
-
         }
         return null;
     }
@@ -113,7 +119,7 @@ public class MysqlDbDriver {
             statement = connection.prepareCall("{CALL agregarTarea(?,?)}");
 
             statement.setString(1,nombre);
-            statement.setString(2,tipo);
+            statement.setString(2, tipo);
 
             statement.execute();
             statement.close();
@@ -304,6 +310,7 @@ public class MysqlDbDriver {
 
     public void addUsers(String pNombre,String pPassword, String pCorreo, int pTelefono, int pTipo){
         try {
+
             CallableStatement statement = connection.prepareCall("{CALL create_user(?,?,?,?,?)}");
             statement.setString(1,pNombre);
             statement.setString(2,pPassword);
@@ -315,7 +322,73 @@ public class MysqlDbDriver {
 
             System.out.println("Usuario Agregado");
         } catch (SQLException e) {
+
             Log.e("Login","Error al agregar usuario",e);
+
         }
+    }
+
+    public ArrayList<Muestreo> getMuestreoUsuario(int id){
+        ArrayList<Muestreo> muestreos = new ArrayList<>();
+
+        String query = "{CALL getMuestreosUsuario(?)}";
+        CallableStatement cs = null;
+        try {
+                cs = connection.prepareCall(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                cs.setInt(1,id);
+                ResultSet rs = cs.executeQuery();
+                while(rs.next()){
+                    int mid = rs.getInt(1);
+                    int midOp = rs.getInt(2);
+                    int midPro = rs.getInt(3);
+                    int obs = rs.getInt(4);
+                    int rgm = rs.getInt(5);
+                    String mHi = rs.getString(6);
+                    String mHf = rs.getString(7);
+                    Muestreo m = new Muestreo(mid,midPro,midOp,obs,rgm,mHi, mHf);
+                    muestreos.add(m);
+                }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return muestreos;
+    }
+
+    public Muestreo getMuestreo(int id){
+        Muestreo m = null;
+        try {
+            CallableStatement statement = null;
+            statement = connection.prepareCall("{CALL getMuestreo(?,?,?,?,?,?,?,?)}");
+
+            statement.setInt(1,id);
+            statement.registerOutParameter(2,Types.INTEGER);
+            statement.registerOutParameter(3,Types.INTEGER);
+            statement.registerOutParameter(4,Types.INTEGER);
+            statement.registerOutParameter(5,Types.INTEGER);
+            statement.registerOutParameter(6,Types.INTEGER);
+            statement.registerOutParameter(7,Types.INTEGER);
+            statement.registerOutParameter(8,Types.INTEGER);
+            statement.execute();
+
+
+            int idOp = statement.getInt(3);
+            int idPro = statement.getInt(4);
+            int observa = statement.getInt(5);
+            int rangom = statement.getInt(6);
+            String inicial = statement.getString(7);
+            String fin = statement.getString(8);
+
+            m = new Muestreo(id,idPro,idOp,observa,rangom,inicial,fin);
+
+            statement.close();
+
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al cargar muestra",e);
+        }
+
+        return m;
     }
 }

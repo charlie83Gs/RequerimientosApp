@@ -4,16 +4,16 @@ public class Muestreo {
     int id;
     int idProyecto;
     int idOperacion;
-    int cantidadOperaciones;
+    int cantidadObservaciones;
     int rangoMinutos;
     String horaInicio;
     String horaFinalizacion;
 
-    public Muestreo(int id, int idProyecto, int idOperacion, int cantidadOperaciones, int rangoMinutos, String horaInicio, String horaFinalizacion) {
+    public Muestreo(int id, int idProyecto, int idOperacion, int cantidadOBservaciones, int rangoMinutos, String horaInicio, String horaFinalizacion) {
         this.id = id;
         this.idProyecto = idProyecto;
         this.idOperacion = idOperacion;
-        this.cantidadOperaciones = cantidadOperaciones;
+        this.cantidadObservaciones = cantidadObservaciones;
         this.rangoMinutos = rangoMinutos;
         this.horaInicio = horaInicio;
         this.horaFinalizacion = horaFinalizacion;
@@ -39,12 +39,12 @@ public class Muestreo {
         this.idOperacion = idOperacion;
     }
 
-    public int getCantidadOperaciones() {
-        return cantidadOperaciones;
+    public int getCantidadObservacioness() {
+        return cantidadObservaciones;
     }
 
-    public void setCantidadOperaciones(int cantidadOperaciones) {
-        this.cantidadOperaciones = cantidadOperaciones;
+    public void setCantidadObservaciones(int cantidadObservaciones) {
+        this.cantidadObservaciones = cantidadObservaciones;
     }
 
     public int getRangoMinutos() {

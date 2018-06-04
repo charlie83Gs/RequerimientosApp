@@ -86,3 +86,28 @@ CREATE PROCEDURE eliminarOperacion(IN ID_OP INT)
 	DELETE FROM operacion WHERE id=ID_OP; //
 DELIMITER ;
 
+
+DELIMITER //
+CREATE PROCEDURE getMuestreosUsuario(IN ID_USUARIO INT)
+	BEGIN
+	
+	SELECT muestreo.id, muestreo.idOperacion, muestreo.idProyecto, muestreo.cantidadObservaciones, muestreo.rangominutos,
+	muestreo.horaInicio, muestreo.horaFinalizacion
+	FROM muestreo inner join analista_muestreo
+	ON muestreo.id = analista_muestreo.idMuestreo
+	WHERE analista_muestreo.idUsuario = ID_USUARIO;
+	END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE getMuestreo(IN ID_MUESTREO INT, OUT pmid int,OUT pmidop int,OUT pmidpro int,OUT pobser int,OUT pran int,
+							OUT pini TIMESTAMP,OUT pfin TIMESTAMP	)
+	BEGIN
+		SELECT muestreo.id, muestreo.idOperacion,muestreo.idProyecto,muestreo.cantidadObservaciones,muestreo.rangominutos,
+		muestreo.horaInicio,muestreo.horaFinalizacion
+		INTO pmid,pmidop,pmidpro,pobser,pran,pini,pfin
+		FROM muestreo
+		where muestreo.id = ID_MUESTREO;
+	END//
+DELIMITER ;

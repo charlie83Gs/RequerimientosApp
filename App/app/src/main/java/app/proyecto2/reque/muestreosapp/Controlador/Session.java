@@ -14,7 +14,7 @@ public class Session {
     }
 
     private Session() {
-        HashMap<String, String> sessionData = new HashMap<>();
+        sessionData = new HashMap<>();
     }
 
 
@@ -31,6 +31,7 @@ public class Session {
     }
 
     public void setSessionDataValue(String key, String value) {
+
         this.sessionData.put(key,value);
     }
 
