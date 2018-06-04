@@ -7,89 +7,70 @@
     tools:context=".Vista.MenuActivityAdmin">
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="59dp">
+
         <Space
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="1" >
-        </Space>
-        <Button
-            android:id="@+id/button_proyecto_admin"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:background="@color/colorSecondary"
-            android:textColor="@color/colorAccent"
-            android:text="Proyectos" />
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" >
-        </Space>
-        <Button
-            android:id="@+id/button_operacion_admin"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:background="@color/colorSecondary"
-            android:textColor="@color/colorAccent"
-            android:text="Operaciones" />
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" >
-        </Space>
+            android:layout_weight="1"></Space>
+
         <Button
             android:id="@+id/button_tarea_admin"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:background="@color/colorSecondary"
-            android:textColor="@color/colorAccent"
-            android:text="Tareas" />
+            android:text="Tareas"
+            android:textColor="@color/colorAccent" />
+
         <Space
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="1" >
-        </Space>
+            android:layout_weight="1"></Space>
+
         <Button
-            android:id="@+id/button_muestreo_admin"
+            android:id="@+id/button_operacion_admin"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:background="@color/colorSecondary"
-            android:textColor="@color/colorAccent"
-            android:text="Muestreos" />
+            android:text="Operaciones"
+            android:textColor="@color/colorAccent" />
+
         <Space
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="1" >
-        </Space>
+            android:layout_weight="1"></Space>
+
         <Button
-            android:id="@+id/button_grafico_admin"
+            android:id="@+id/button_proyecto_admin"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:background="@color/colorSecondary"
-            android:textColor="@color/colorAccent"
-            android:text="Graficos" />
+            android:text="Proyectos"
+            android:textColor="@color/colorAccent" />
+
         <Space
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="1" >
-        </Space>
+            android:layout_weight="1"></Space>
+
         <Button
             android:id="@+id/button_usuario_admin"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:background="@color/colorSecondary"
-            android:textColor="@color/colorAccent"
-            android:text="Usuarios" />
+            android:text="Usuarios"
+            android:textColor="@color/colorAccent" />
+
         <Space
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="1" >
-        </Space>
+            android:layout_weight="1"></Space>
 
         <Button
             android:id="@+id/button_trabajador_admin"
@@ -98,11 +79,37 @@
             android:background="@color/colorSecondary"
             android:text="TRABAJADORES"
             android:textColor="@color/colorAccent" />
+
         <Space
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="1" >
-        </Space>
+            android:layout_weight="1"></Space>
+
+        <Button
+            android:id="@+id/button_muestreo_admin"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondary"
+            android:text="Muestreos"
+            android:textColor="@color/colorAccent" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"></Space>
+
+        <Button
+            android:id="@+id/button_grafico_admin"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondary"
+            android:text="Graficos"
+            android:textColor="@color/colorAccent" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"></Space>
     </LinearLayout>
 
 
