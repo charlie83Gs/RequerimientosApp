@@ -378,6 +378,11 @@ public class LoginMuestreosApp extends AppCompatActivity implements LoaderCallba
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
+
+                //ELIMINAR DESPUES
+                Intent activityIntent = new Intent(activity,MenuActivityAdmin.class);
+                startActivity(activityIntent);
+
             }
         }
 

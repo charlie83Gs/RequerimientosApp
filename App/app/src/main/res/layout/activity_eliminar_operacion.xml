@@ -43,7 +43,7 @@
             android:text="Seleccionar operación" />
 
         <Spinner
-            android:id="@+id/spinner6"
+            android:id="@+id/spinner_ops_eliminar"
             android:layout_width="267dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
