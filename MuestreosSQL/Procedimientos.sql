@@ -9,6 +9,18 @@ CREATE PROCEDURE create_user(IN pNombre VARCHAR(100),IN pPassword VARCHAR(100),I
 DELIMITER ;
 
 DELIMITER //
+CREATE PROCEDURE eliminarUsuario(IN ID_OP INT)
+	DELETE FROM usuario WHERE id=ID_OP; //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE getIdUsuario(IN pNombre VARCHAR(100), OUT ID_OP INT)
+	SELECT id 
+	into ID_OP
+	FROM usuario WHERE nombre = pNombre; //
+DELIMITER ;
+
+DELIMITER //
 
 CREATE PROCEDURE create_trabajador(IN pApodo VARCHAR(50),IN pPuesto VARCHAR(50))
 	BEGIN
