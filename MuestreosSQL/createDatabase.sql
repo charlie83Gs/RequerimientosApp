@@ -107,10 +107,9 @@ CREATE TABLE Usuario(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	nombre VARCHAR(100),
 	passwordDigest VARCHAR(100),
-	telefono DECIMAL(12,0),
 	correo VARCHAR(100),
+    telefono DECIMAL(12,0),
 	tipoUsuario int
-
 );
 
 ALTER TABLE Usuario ADD UNIQUE (correo);
