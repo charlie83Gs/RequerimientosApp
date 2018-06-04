@@ -21,5 +21,7 @@ public class EditarUsuario extends AppCompatActivity {
         tiposUsuario.setAdapter(adapter);
 
 
+
+
     }
 }

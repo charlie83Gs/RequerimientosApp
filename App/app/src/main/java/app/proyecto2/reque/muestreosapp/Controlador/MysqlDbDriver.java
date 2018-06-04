@@ -636,6 +636,27 @@ public class MysqlDbDriver {
         return trabajadores;
     }
 
+    public ArrayList<String> mostrarUsuario(){
+        ArrayList<String> trabajadores = new ArrayList<String>();
+        try {
+            String query = "select nombre from usuario";
+            Statement st = connection.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                String nombreT = rs.getString("nombre");
+
+                trabajadores.add(nombreT);
+                System.out.println(nombreT);
+            }
+            st.close();
+
+        } catch (SQLException e) {
+            Log.e("Login","Error al tratar de recuperar usuarios",e);
+        }
+        return trabajadores;
+    }
+
     public void editarTrabajador(String trabajador,String newapodo, String newpuesto){
         int idTrabajador = -1;
         try {
@@ -680,6 +701,26 @@ public class MysqlDbDriver {
             System.out.println("Trabajador Eliminado");
         } catch (SQLException e) {
             Log.e("Login","Error al eliminar trabajador",e);
+        }
+
+    }
+
+    public void eliminarUsuario(String usuario){
+        int idUsuario = -1;
+        try {
+            CallableStatement statement = connection.prepareCall("{CALL getIdUsuario(?,?)}");
+            statement.setString(1,usuario);
+            statement.registerOutParameter(2, Types.INTEGER);
+            statement.execute();
+            idUsuario = statement.getInt(2);
+
+            statement = connection.prepareCall("{CALL  eliminarUsuario(?)}");
+            statement.setInt(1,idUsuario);
+            statement.execute();
+
+            System.out.println("Usuario Eliminado");
+        } catch (SQLException e) {
+            Log.e("Login","Error al eliminar usuario",e);
         }
 
     }
