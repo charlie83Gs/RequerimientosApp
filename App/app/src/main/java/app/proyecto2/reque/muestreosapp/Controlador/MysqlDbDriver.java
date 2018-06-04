@@ -17,8 +17,8 @@ import app.proyecto2.reque.muestreosapp.Modelo.Usuario;
 public class MysqlDbDriver {
     private static final MysqlDbDriver ourInstance = new MysqlDbDriver();
 
-    //private static final String ip = "192.168.0.108";
-    private static final String ip = "10.0.2.2";
+    private static final String ip = "192.168.43.20";
+
     private static final String port = "3306";
     private static final String dataBase = "requemuestreos";
     private Connection connection;
