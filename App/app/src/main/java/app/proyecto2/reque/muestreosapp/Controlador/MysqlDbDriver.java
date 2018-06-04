@@ -318,4 +318,19 @@ public class MysqlDbDriver {
             Log.e("Login","Error al agregar usuario",e);
         }
     }
+
+    public void addTrabajador(String apodo, String puesto){
+        try {
+            CallableStatement statement = connection.prepareCall("{CALL create_trabajador(?,?)}");
+            statement.setString(1,apodo);
+            statement.setString(2,puesto);
+
+            statement.execute();
+
+            System.out.println("Trabajador Agregado");
+        } catch (SQLException e) {
+            Log.e("Login","Error al agregar trabajador",e);
+        }
+
+    }
 }

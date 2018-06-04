@@ -9,6 +9,16 @@ CREATE PROCEDURE create_user(IN pPassword VARCHAR(100),IN pCorreo VARCHAR(100),I
 
 DELIMITER ;
 
+DELIMITER //
+
+CREATE PROCEDURE create_trabajador(IN pApodo VARCHAR(50),IN pPuesto VARCHAR(50))
+	BEGIN
+		INSERT INTO trabajador(apodo, puesto)
+		VALUES(pApodo, pPuesto);
+	END//
+
+DELIMITER ;
+
 
 DELIMITER //
 
